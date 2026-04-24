@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bus Booking System</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background: #eef2f3;
+        }
+
+        header {
+            background: #2c3e50;
+            color: white;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .container {
+            width: 60%;
+            margin: 30px auto;
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            margin-top: 15px;
+            width: 100%;
+            padding: 10px;
+            background: #27ae60;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #219150;
+        }
+
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            background: #dff0d8;
+            border-radius: 5px;
+            display: none;
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+            background: #2c3e50;
+            color: white;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>Online Bus Booking</h1>
+</header>
+
+<div class="container">
+    <h2>Book Your Ticket</h2>
+
+    <form id="bookingForm">
+        <label>Name</label>
+        <input type="text" id="name" required>
+
+        <label>From</label>
+        <input type="text" id="from" required>
+
+        <label>To</label>
+        <input type="text" id="to" required>
+
+        <label>Date of Journey</label>
+        <input type="date" id="date" required>
+
+        <label>Bus Type</label>
+        <select id="busType">
+            <option>AC Sleeper</option>
+            <option>Non-AC Sleeper</option>
+            <option>Seater</option>
+        </select>
+
+        <label>Number of Seats</label>
+        <input type="number" id="seats" min="1" max="6" required>
+
+        <button type="submit">Book Now</button>
+    </form>
+
+    <div class="result" id="result"></div>
+</div>
+
+<footer>
+    <p>&copy; 2026 Bus Booking System</p>
+</footer>
+
+<script>
+    document.getElementById("bookingForm").addEventListener("submit", function(e) {
+        e.preventDefault();
+
+        let name = document.getElementById("name").value;
+        let from = document.getElementById("from").value;
+        let to = document.getElementById("to").value;
+        let date = document.getElementById("date").value;
+        let seats = document.getElementById("seats").value;
+
+        let resultDiv = document.getElementById("result");
+        resultDiv.style.display = "block";
+        resultDiv.innerHTML = `
+            <strong>Booking Confirmed!</strong><br>
+            Name: ${name}<br>
+            Route: ${from} → ${to}<br>
+            Date: ${date}<br>
+            Seats: ${seats}
+        `;
+    });
+</script>
+
+</body>
+</html>
